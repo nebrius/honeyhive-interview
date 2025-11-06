@@ -23,6 +23,7 @@ ChartJS.register(
   Legend
 );
 
+// TODO: add support for multiple datasets
 export function Graph({
   title,
   data,
@@ -55,7 +56,7 @@ export function Graph({
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'top' as const,
+          display: false,
         },
         title: {
           display: true,

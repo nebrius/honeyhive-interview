@@ -12,15 +12,22 @@ import { InternalError } from '@/util/error';
 const COLUMNS_TO_SHOW = [
   'model',
   'response_time_ms',
-] as const satisfies readonly (keyof DataEntry)[];
+  ['evaluation_metrics', 'factual_accuracy'],
+] as const satisfies readonly (
+  | keyof DataEntry
+  // TODO: NonNullable isn't a great option, but works in a pinch. Make this stricter
+  | [keyof DataEntry, keyof NonNullable<DataEntry['evaluation_metrics']>]
+)[];
 
 function Row({ dataEntry }: { dataEntry: DataEntry }) {
   return (
     <div className="flex gap-1">
       {COLUMNS_TO_SHOW.map((column) => (
         // TODO: make the width dynamic based on the content
-        <div key={column} className="w-30">
-          {dataEntry[column]}
+        <div key={column.toString()} className="w-60">
+          {Array.isArray(column)
+            ? dataEntry[column[0]]?.[column[1]]
+            : dataEntry[column]}
         </div>
       ))}
     </div>
@@ -44,6 +51,15 @@ export function Table() {
 
   return (
     <>
+      {/* Fixed Header */}
+      <div className="flex gap-1 border border-gray-700 border-b-0 bg-gray-800 p-2 font-semibold">
+        {COLUMNS_TO_SHOW.map((column) => (
+          <div key={column.toString()} className="w-60">
+            {Array.isArray(column) ? column.join('.') : column}
+          </div>
+        ))}
+      </div>
+      {/* Scrollable Content */}
       <div
         ref={parentRef}
         className="h-1/3 overflow-auto border border-gray-700 p-2"

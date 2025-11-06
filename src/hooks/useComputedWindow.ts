@@ -1,6 +1,14 @@
 import { useMemo } from 'react';
 
-// This function computes the average of data values grouped by the specified bucket size.
+// This function computes the average of data values grouped by the specified
+// bucket size. TODO: this is pretty specific to the sample data, given even the
+// largest data set happens in a single day. Really though, we should also
+// support an optional time window to compute a moving average.
+//
+// We would need this if, say, we wanted to create SLAs, and alerts on them,
+// based on seasonal data (aka daily, weekly, etc). As-is, this setup is subject
+// to seasonal affects, such as reduced traffic (and likely decreased response
+// time) on weekends vs weekdays.
 export function useComputedWindow(
   data: Array<{ value: number; date: Date }>,
   bucketSizeMs: number,
@@ -31,7 +39,6 @@ export function useComputedWindow(
 
     // Compute average for each bucket and format result
     const result: Array<{ value: number; date: Date }> = [];
-
     buckets.forEach(({ values, bucketStartDate }) => {
       const average = values.reduce((sum, val) => sum + val, 0) / values.length;
       result.push({
@@ -39,8 +46,6 @@ export function useComputedWindow(
         date: bucketStartDate,
       });
     });
-
-    // Sort by date
     result.sort((a, b) => a.date.getTime() - b.date.getTime());
 
     return result;

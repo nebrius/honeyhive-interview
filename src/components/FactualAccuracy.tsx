@@ -52,5 +52,5 @@ export function FactualAccuracy() {
   );
 
   // TODO: make beginAtZero user configurable
-  return <Graph title="Response Time" data={computedWindow} />;
+  return <Graph title="Factual Accuracy" data={computedWindow} />;
 }

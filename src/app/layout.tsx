@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Link from 'next/link';
 
+import { New } from '@/components/New';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -29,8 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased absolute inset-0 p-3 dark:bg-black`}
       >
-        <header className="border-b border-gray-700">
-          <Link href="/">Honey Hive Take Home</Link>
+        <header className="flex min-h-12 items-center gap-2 border-b border-gray-700 pb-3 mb-3">
+          <div className="grow">
+            <Link href="/">Honey Hive Take Home</Link>
+          </div>
+          <New />
         </header>
         <main className="h-full">{children}</main>
       </body>
