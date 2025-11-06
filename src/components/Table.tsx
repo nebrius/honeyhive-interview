@@ -46,23 +46,19 @@ export function Table() {
     <>
       <div
         ref={parentRef}
-        className="h-1/3 overflow-auto border border-gray-700"
+        className="h-1/3 overflow-auto border border-gray-700 p-2"
       >
         <div
+          className="w-full relative"
           style={{
             height: `${rowVirtualizer.getTotalSize()}px`,
-            width: '100%',
-            position: 'relative',
           }}
         >
           {rowVirtualizer.getVirtualItems().map((virtualItem) => (
             <div
               key={virtualItem.key}
+              className="absolute top-0 left-0 w-full"
               style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
                 height: `${virtualItem.size}px`,
                 transform: `translateY(${virtualItem.start}px)`,
               }}
