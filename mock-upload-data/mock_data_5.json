@@ -1,0 +1,112 @@
+{
+  "responses": [
+    {
+      "id": "resp_9129ea8d3f73430ad7dc182e",
+      "timestamp": "2025-01-31T23:57:07.986Z",
+      "model": "gpt-4",
+      "prompt_tokens": 236,
+      "completion_tokens": 1898,
+      "total_tokens": 2134,
+      "response_time_ms": 2370,
+      "status": "success",
+      "cost_usd": 0.087,
+      "temperature": 0.8,
+      "max_tokens": 500,
+      "prompt_template": "standard_qa",
+      "output": "Sample AI-generated output text with relevant content.",
+      "evaluation_metrics": {
+        "relevance_score": 0.89,
+        "factual_accuracy": 0.88,
+        "coherence_score": 0.88,
+        "response_quality": 0.86
+      },
+      "error": null
+    },
+    {
+      "id": "resp_b2508154decbfa82ce02f84b",
+      "timestamp": "2025-01-31T23:55:07.987Z",
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 51,
+      "completion_tokens": 102,
+      "total_tokens": 153,
+      "response_time_ms": 954,
+      "status": "success",
+      "cost_usd": 0.0936,
+      "temperature": 0.7,
+      "max_tokens": 1000,
+      "prompt_template": "code_generation",
+      "output": "Sample AI-generated output text with relevant content.",
+      "evaluation_metrics": {
+        "relevance_score": 0.92,
+        "factual_accuracy": 0.9,
+        "coherence_score": 0.9,
+        "response_quality": 0.94
+      },
+      "error": null
+    },
+    {
+      "id": "resp_b6953669d7d5713456f7ae62",
+      "timestamp": "2025-01-31T23:53:07.987Z",
+      "model": "claude-3",
+      "prompt_tokens": 144,
+      "completion_tokens": 847,
+      "total_tokens": 991,
+      "response_time_ms": 3169,
+      "status": "success",
+      "cost_usd": 0.0994,
+      "temperature": 0.7,
+      "max_tokens": 2000,
+      "prompt_template": "complex_reasoning",
+      "output": "Sample AI-generated output text with relevant content.",
+      "evaluation_metrics": {
+        "relevance_score": 0.85,
+        "factual_accuracy": 0.91,
+        "coherence_score": 0.88,
+        "response_quality": 0.91
+      },
+      "error": null
+    },
+    {
+      "id": "resp_9f59fbfe93f728de5b24d462",
+      "timestamp": "2025-01-25T05:35:41Z",
+      "model": "gpt-4",
+      "prompt_tokens": 157,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "response_time_ms": 2432,
+      "status": "timeout",
+      "cost_usd": 0,
+      "temperature": 1,
+      "max_tokens": 500,
+      "prompt_template": "code_generation",
+      "output": null,
+      "evaluation_metrics": null,
+      "error": {
+        "type": "timeout",
+        "message": "Request timed out after 60 seconds"
+      }
+    },
+    {
+      "id": "resp_85e18e729904c4708bcf4487",
+      "timestamp": "2025-01-31T23:49:07.988Z",
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 108,
+      "completion_tokens": 1917,
+      "total_tokens": 2025,
+      "response_time_ms": 1989,
+      "status": "success",
+      "cost_usd": 0.0276,
+      "temperature": 0.8,
+      "max_tokens": 500,
+      "prompt_template": "standard_qa",
+      "output": "Sample AI-generated output text with relevant content.",
+      "evaluation_metrics": {
+        "relevance_score": 0.91,
+        "factual_accuracy": 0.92,
+        "coherence_score": 0.86,
+        "response_quality": 0.91
+      },
+      "error": null
+    }
+  ]
+}

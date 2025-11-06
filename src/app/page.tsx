@@ -1,7 +1,22 @@
+'use client';
+
+import { useAtomValue } from 'jotai';
+
+import { FileUpload } from '@/components/Empty';
+import { Table } from '@/components/Table';
+import { dataEntriesAtom } from '@/state';
+
 export default function Home() {
+  const dataEntries = useAtomValue(dataEntriesAtom);
+
+  if (!dataEntries) {
+    return <FileUpload />;
+  }
+
   return (
-    <div className="absolute inset-0 p-3 dark:bg-black">
-      <h1>Home</h1>
-    </div>
+    <>
+      <h2>Data</h2>
+      <Table />
+    </>
   );
 }

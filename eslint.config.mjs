@@ -2,7 +2,7 @@ import { getDirname } from 'cross-dirname';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
-import { all } from 'eslint-plugin-fast-import';
+import { recommended } from 'eslint-plugin-fast-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
@@ -33,7 +33,7 @@ const eslintConfig = defineConfig([
     },
   },
 
-  all({
+  recommended({
     entryPoints: {
       'src/app/**/page.tsx': ['default'],
       'src/app/**/layout.tsx': ['default', 'metadata'],
