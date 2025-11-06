@@ -26,10 +26,14 @@ ChartJS.register(
 export function Graph({
   title,
   data,
+  beginAtZero,
 }: {
   title: string;
   data: Array<{ value: number; date: Date }>;
+  beginAtZero?: boolean;
 }) {
+  // TODO: make the x-axis scale to time-frame, e.g. if it's over the course of
+  // less than one day, just show HH:MM:SS, etc.
   const chartData = useMemo(() => {
     return {
       labels: data.map((point) => point.date.toLocaleDateString()),
@@ -60,11 +64,11 @@ export function Graph({
       },
       scales: {
         y: {
-          beginAtZero: true,
+          beginAtZero,
         },
       },
     }),
-    [title]
+    [beginAtZero, title]
   );
 
   return (

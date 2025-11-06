@@ -3,6 +3,7 @@
 import { useAtomValue } from 'jotai';
 
 import { FileUpload } from '@/components/Empty';
+import { FactualAccuracy } from '@/components/FactualAccuracy';
 import { ResponseTime } from '@/components/ResponseTime';
 import { Table } from '@/components/Table';
 import { dataEntriesAtom } from '@/state';
@@ -18,6 +19,8 @@ export default function Home() {
     <>
       <h2 className="text-2xl font-bold mb-3">Response Time</h2>
       <ResponseTime />
+      <h2 className="text-2xl font-bold mb-3 mt-6">Factual Accuracy</h2>
+      <FactualAccuracy />
       <h2 className="text-2xl font-bold mb-3 mt-6">Data</h2>
       <Table />
     </>

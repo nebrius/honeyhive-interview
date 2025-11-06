@@ -7,7 +7,7 @@ import { InternalError } from '@/util/error';
 
 import { Graph } from './Graph';
 
-export function ResponseTime() {
+export function FactualAccuracy() {
   const dataEntries = useAtomValue(dataEntriesAtom);
 
   // This should never happen, but check just in case and to make TypeScript happy
@@ -16,11 +16,13 @@ export function ResponseTime() {
   }
 
   const responseTimeData = useMemo(() => {
-    return dataEntries.map((entry) => ({
-      value: entry.response_time_ms,
-      // TODO: this date object should be created at atom hydration time instead of here
-      date: new Date(entry.timestamp),
-    }));
+    return dataEntries
+      .filter((entry) => entry.evaluation_metrics !== null)
+      .map((entry) => ({
+        value: entry.evaluation_metrics!.factual_accuracy ?? 0,
+        // TODO: this date object should be created at atom hydration time instead of here
+        date: new Date(entry.timestamp),
+      }));
   }, [dataEntries]);
 
   // Compute the start and end date of data.
@@ -50,5 +52,5 @@ export function ResponseTime() {
   );
 
   // TODO: make beginAtZero user configurable
-  return <Graph title="Response Time" data={computedWindow} beginAtZero />;
+  return <Graph title="Response Time" data={computedWindow} />;
 }
