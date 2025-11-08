@@ -2,9 +2,8 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Link from 'next/link';
 
-import { New } from '@/components/New';
+import { Nav } from '@/components/Nav';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,15 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased absolute inset-0 p-3 dark:bg-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased absolute inset-0 p-3 dark:bg-black flex`}
       >
-        <header className="flex min-h-12 items-center gap-2 border-b border-gray-700 pb-3 mb-3">
-          <div className="grow">
-            <Link href="/">Honey Hive Take Home</Link>
-          </div>
-          <New />
-        </header>
-        <main className="h-full">{children}</main>
+        <nav className="w-1/3 border-r border-gray-700">
+          <Nav />
+        </nav>
+        <div className="grow">{children}</div>
       </body>
     </html>
   );

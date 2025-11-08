@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
 
-import { DataEntry } from './types';
+import { StoredDataEntry } from './types';
 
-export const dataEntriesAtom = atom<DataEntry[] | null>(null);
+export const dataEntriesAtom = atom<StoredDataEntry | null>(null);

@@ -16,7 +16,7 @@ export function FactualAccuracy() {
   }
 
   const responseTimeData = useMemo(() => {
-    return dataEntries
+    return dataEntries.data.responses
       .filter((entry) => entry.evaluation_metrics !== null)
       .map((entry) => ({
         value: entry.evaluation_metrics!.factual_accuracy ?? 0,

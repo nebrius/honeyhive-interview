@@ -1,13 +1,11 @@
 'use client';
 
-import { useSetAtom } from 'jotai';
+import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-import { dataEntriesAtom } from '@/state';
-
 export function FileUpload() {
-  const setDataEntries = useSetAtom(dataEntriesAtom);
+  const navigation = useRouter();
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -24,7 +22,15 @@ export function FileUpload() {
         if (typeof content === 'string') {
           try {
             const data = JSON.parse(content);
-            setDataEntries(data.responses);
+            const id = self.crypto.randomUUID();
+            localStorage.setItem(
+              `document-${id}`,
+              JSON.stringify({
+                name: 'Untitled',
+                data,
+              })
+            );
+            navigation.push(id);
           } catch (error) {
             console.error('Failed to parse JSON:', error);
           }
@@ -33,7 +39,7 @@ export function FileUpload() {
 
       reader.readAsText(acceptedFiles[0]);
     },
-    [setDataEntries]
+    [navigation]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

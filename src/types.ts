@@ -1,11 +1,11 @@
-export type EvaluationMetrics = {
+type EvaluationMetrics = {
   relevance_score: number;
   factual_accuracy: number;
   coherence_score: number;
   response_quality: number;
 };
 
-export type ErrorInfo = {
+type ErrorInfo = {
   type: string;
   message: string;
 };
@@ -26,4 +26,9 @@ export type DataEntry = {
   output: string | null;
   evaluation_metrics: EvaluationMetrics | null;
   error: ErrorInfo | null;
+};
+
+export type StoredDataEntry = {
+  name: string;
+  data: { responses: DataEntry[] };
 };

@@ -16,7 +16,7 @@ export function ResponseTime() {
   }
 
   const responseTimeData = useMemo(() => {
-    return dataEntries.map((entry) => ({
+    return dataEntries.data.responses.map((entry) => ({
       value: entry.response_time_ms,
       // TODO: this date object should be created at atom hydration time instead of here
       date: new Date(entry.timestamp),

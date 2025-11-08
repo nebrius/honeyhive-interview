@@ -44,7 +44,7 @@ export function Table() {
 
   const parentRef = useRef(null);
   const rowVirtualizer = useVirtualizer({
-    count: dataEntries?.length ?? 0,
+    count: dataEntries.data.responses.length ?? 0,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 35,
   });
@@ -79,7 +79,7 @@ export function Table() {
                 transform: `translateY(${virtualItem.start}px)`,
               }}
             >
-              <Row dataEntry={dataEntries[virtualItem.index]} />
+              <Row dataEntry={dataEntries.data.responses[virtualItem.index]} />
             </div>
           ))}
         </div>
